@@ -1,0 +1,49 @@
+# 01-hello-world.yml
+# Lesson 1: The absolute basics — triggers, a job, a runner, and steps.
+
+name: 01 - Hello World
+
+# When should this workflow run?
+on:
+  # Enforce manual actions only and prompt for custom inputs
+  workflow_dispatch:
+    inputs:
+      log_level:
+        description: 'Select the logging severity level'
+        required: true
+        default: 'info'
+        type: choice
+        options:
+          - info
+          - warning
+          - debug
+      custom_greeting:
+        description: 'Custom message to print (Optional)'
+        required: false
+        default: 'Have a great day!'
+        type: string
+
+# What should it do?
+jobs:
+  say-hello:
+    name: Say Hello
+    runs-on: ubuntu-latest   # the machine GitHub provides for free
+
+    steps:
+      # Step 1: Print a greeting
+      - name: Greet the user
+        run: echo "Hello, ${{ github.actor }}! Welcome to GitHub Actions."
+
+      # Step 2: Show some context about this run
+      - name: Show run info
+        run: |
+          echo "Repository : ${{ github.repository }}"
+          echo "Branch     : ${{ github.ref_name }}"
+          echo "Event      : ${{ github.event_name }}"
+          echo "Commit SHA : ${{ github.sha }}"
+
+      # Step 3: Print the manual inputs provided by the user
+      - name: Display custom manual inputs
+        run: |
+          echo "Selected Log Level : ${{ inputs.log_level }}"
+          echo "Custom Greeting    : ${{ inputs.custom_greeting }}"
