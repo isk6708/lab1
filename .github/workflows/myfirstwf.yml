@@ -1,0 +1,33 @@
+# 01-hello-world.yml
+# Lesson 1: The absolute basics — triggers, a job, a runner, and steps.
+
+name: 01 - Hello World
+
+# When should this workflow run?
+on:
+  # Run on every push to main
+  push:
+    branches:
+      - main
+
+  # Also allow manual runs from the Actions tab
+  workflow_dispatch:
+
+# What should it do?
+jobs:
+  say-hello:
+    name: Say Hello
+    runs-on: ubuntu-latest   # the machine GitHub provides for free
+
+    steps:
+      # Step 1: Print a greeting
+      - name: Greet the user
+        run: echo "Hello, ${{ github.actor }}! Welcome to GitHub Actions."
+
+      # Step 2: Show some context about this run
+      - name: Show run info
+        run: |
+          echo "Repository : ${{ github.repository }}"
+          echo "Branch     : ${{ github.ref_name }}"
+          echo "Event      : ${{ github.event_name }}"
+          echo "Commit SHA : ${{ github.sha }}"
