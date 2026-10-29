@@ -8,10 +8,10 @@ on:
   # Run on every push to main
   push:
     branches:
-      - main
+      - main-mana
 
   # Also allow manual runs from the Actions tab
-  # workflow_dispatch:
+  workflow_dispatch:
 
 # What should it do?
 jobs:
