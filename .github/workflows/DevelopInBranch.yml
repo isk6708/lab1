@@ -19,6 +19,7 @@ jobs:
           - name: Log run metadata
             run: | 
              echo "${{ github.event.pull_request.title }}"
+             echo "PR title is '${{ github.event.pull_request.title }}'."
              echo "Workflow  triggered in branch '${{ github.ref }}'."
              echo "Workflow  triggered by event '${{ github.event_name }}'."
              echo "Workflow  triggered by actor '${{ github.actor }}''."
