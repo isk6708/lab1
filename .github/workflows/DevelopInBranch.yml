@@ -23,7 +23,6 @@ jobs:
              echo "::warning::This is a warning message."
              echo "::error::This is an error message."
              echo "${{ github.event.pull_request.title }}"
-             echo "PR title is '${{ github.event.pull_request.title }}'."
              echo "Workflow  triggered in branch '${{ github.ref }}'."
              echo "Workflow  triggered by event '${{ github.event_name }}'."
              echo "Workflow  triggered by actor '${{ github.actor }}''."
