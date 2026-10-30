@@ -4,8 +4,20 @@ on: [pull_request, workflow_dispatch]
 jobs:
     job1:
         runs-on: ubuntu-latest
+        # Apply permissions globally to all jobs in this workflow
+        permissions:
+            contents: read
+            pull-requests: write
         steps:
-        - run: | 
-            echo "Workflow  triggered in branch '${{ github.ref }}'."
-            echo "Workflow  triggered by event '${{ github.event_name }}'."
-            echo "Workflow  triggered by actor '${{ github.actor }}''."
+          # Step 1: Fetch the repository files so actionlint can read them
+          - name: Check out repository code
+            uses: actions/checkout@v4.1.0
+          # Step 2: Scan your workflow files for syntax errors
+          - name: Run syntax linter
+            uses: devops-actions/actionlint@v0.1.2
+          # Step 3: Run your custom logging commands
+          - name: Log run metadata
+            run: | 
+             echo "Workflow  triggered in branch '${{ github.ref }}'."
+             echo "Workflow  triggered by event '${{ github.event_name }}'."
+             echo "Workflow  triggered by actor '${{ github.actor }}''."
