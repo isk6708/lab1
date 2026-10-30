@@ -1,7 +1,7 @@
 # 01-hello-world.yml
 # Lesson 1: The absolute basics — triggers, a job, a runner, and steps.
 
-name: 01 - Hello World
+name: 01 - My First Workflow
 
 # When should this workflow run?
 on:
