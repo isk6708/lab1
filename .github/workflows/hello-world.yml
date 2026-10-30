@@ -37,6 +37,8 @@ jobs:
       # Step 2: Show some context about this run
       - name: Show run info
         run: |
+          echo "Training Provider : ${{ vars.TP }}"
+          echo "Database : ${{ secrets.MY_DB}}"
           echo "Repository : ${{ github.repository }}"
           echo "Branch     : ${{ github.ref_name }}"
           echo "Event      : ${{ github.event_name }}"
