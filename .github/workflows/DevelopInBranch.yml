@@ -6,6 +6,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - run: | 
-            echo "Workflow triggered in branch '${{ github.ref }}'."
-            echo "Workflow triggered by event '${{ github.event_name }}'."
-            echo "Workflow triggered by actor '${{ github.actor }}''."
+            echo "Workflow  triggered in branch '${{ github.ref }}'."
+            echo "Workflow  triggered by event '${{ github.event_name }}'."
+            echo "Workflow  triggered by actor '${{ github.actor }}''."
